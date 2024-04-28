@@ -16,13 +16,13 @@ int	validate_arguments(int argc, char **argv)
 {
 	if (argc != 2)
 	{
-		ft_printf_fd(2, "Error\nWrong number of arguments\n");
+		perror("Error\nWrong number of arguments\n");
 		return (INVALID_ARG);
 	}
 	if (ft_strlen(argv[1]) < 5 || ft_strncmp(argv[1] + ft_strlen(argv[1]) - 4,
 			".cub", 4) != 0)
 	{
-		ft_printf_fd(2, "Error\nWrong file extension\n");
+		perror("Error\nWrong file extension\n");
 		return (INVALID_ARG);
 	}
 	return (SUCCESS);

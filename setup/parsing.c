@@ -77,7 +77,7 @@ int	parse_map(char *file_name, t_mdata *map_infos)
 
 	fd = open_map_file(file_name);
 	if (fd == -1)
-		return (ft_printf_fd(2, "Error\nCould not open file\n"), OPEN_ERR);
+		return (perror("Error\nCould not open file\n"), OPEN_ERR);
 	line = get_next_line(fd);
 	while (line)
 	{

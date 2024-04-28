@@ -18,7 +18,7 @@ static int	init_image(t_params *params, char *image_path, t_gdata *image)
 			&image->height);
 	if (!image->img)
 	{
-		ft_printf_fd(2, "Error\nFailed to load texture\n");
+		perror("Error\nFailed to load texture\n");
 		free_and_cleanup(params);
 		return (IMG_FAIL);
 	}
@@ -26,7 +26,7 @@ static int	init_image(t_params *params, char *image_path, t_gdata *image)
 			&image->line_length, &image->endian);
 	if (!image->addr)
 	{
-		ft_printf_fd(2, "Error\nFailed to load texture\n");
+		perror("Error\nFailed to load texture\n");
 		free_and_cleanup(params);
 		return (IMG_FAIL);
 	}

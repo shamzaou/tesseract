@@ -17,15 +17,13 @@ static int	parse_texture_line(t_mdata *map_infos, char **array)
 	if (array_size(array) != 2)
 	{
 		perror("Error\n");
-		perror("Invalid texture line format. Please provide \
-only the texture identifier and the path.\n");
+		perror("Invalid texture.\n");
 		return (WRONG_MAP);
 	}
 	if (!is_valid_texture_path(array[1]))
 	{
 		perror("Error\n");
-		perror("Invalid or non-existent texture path. Please provide \
-a valid and accessible file path for the texture.\n");
+		perror("Invalid or non-existent texture path.\n");
 		return (WRONG_MAP);
 	}
 	if (ft_strcmp(array[0], "NO") == 0)
@@ -87,8 +85,8 @@ int	handle_texture_line(t_mdata *map_infos, char ***array,
 {
 	if (*parsed_flag)
 	{
-		ft_printf_fd(2, "Error\n");
-		ft_printf_fd(2, "Duplicate %s texture path.\n", type);
+		perror("Error\n");
+		perror("Duplicate texture path.\n");
 		return (free_split_array(*array), WRONG_MAP);
 	}
 	else
@@ -105,8 +103,8 @@ int	handle_color_line(t_mdata *map_infos, char ***array,
 {
 	if (*parsed_flag)
 	{
-		ft_printf_fd(2, "Error\n");
-		ft_printf_fd(2, "Duplicate %s color.\n", type);
+		perror("Error\n");
+		perror("Duplicate color.\n");
 		return (free_split_array(*array), WRONG_MAP);
 	}
 	else

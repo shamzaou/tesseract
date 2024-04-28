@@ -10,8 +10,26 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRC =   main.c rendering/line.c rendering/mlx_draw.c rendering/player_actions.c rendering/player_mouvements.c rendering/queue.c rendering/ray_intersection.c rendering/raycasting.c rendering/rendering.c \
-		setup/free.c setup/hooks.c setup/init_images.c setup/map_error_handling.c setup/map_validation.c setup/map.c setup/parse_line.c setup/parsing_helpers.c setup/parsing validation.c setup/parsing.c \
+SRC =   main.c \
+	rendering/line.c \
+	rendering/mlx_draw.c \
+	rendering/player_actions.c \
+	rendering/player_mouvements.c \
+	rendering/queue.c \
+	rendering/ray_intersection.c \
+	rendering/raycasting.c \
+	rendering/rendering.c \
+	setup/free.c \
+	setup/hooks.c \
+	setup/init.c \
+	setup/init_images.c \
+	setup/map_error_handling.c \
+	setup/map_validation.c \
+	setup/map.c \
+	setup/parse_line.c \
+	setup/parsing_helpers.c \
+	setup/parsing_validation.c \
+	setup/parsing.c
 
 NAME = cub3d
 
@@ -37,6 +55,10 @@ GNL = ./libft/get_next_line/getnextline.a
 
 all: $(NAME)
 
+$(OBJ): %.o: %.c
+	@mkdir -p $(@D)
+	@$(CC) $(CFLAGS) -Imlx -c $< -o $@
+
 $(NAME): $(MLX) $(OBJ)
 	@make -sC ./libft
 	@$(CC) $(CFLAGS) $(OBJ) $(LIB) $(PRINTF) $(GNL) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
@@ -55,5 +77,3 @@ fclean: clean
 	@make fclean -sC ./libft
 
 re: fclean all
-
-.PHONY: all clean fclean re
