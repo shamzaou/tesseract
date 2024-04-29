@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamzaou <shamzaou@student.42abudhabi.ae>  +#+  +:+       +#+        */
+/*   By: alabdull <@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 19:19:55 by shamzaou          #+#    #+#             */
-/*   Updated: 2024/04/28 19:19:55 by shamzaou         ###   ########.fr       */
+/*   Updated: 2024/04/29 18:23:28 by alabdull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@
 # include "libft/libft.h"
 # include "mlx/mlx.h"
 
-# define WINDOW_WIDTH 1024
-# define WINDOW_HEIGHT 1024
-# define RESOLUTION 1024
+# define WINDOW_WIDTH 800
+# define WINDOW_HEIGHT 800
+# define RESOLUTION 800
 # define TILE_SIZE 64
 # define TEXTURE_SIZE 64
 # define MOVE_SPEED 40
-# define ROTATE_SPEED 0.3
+# define ROTATE_SPEED 0.5
 # define HORIZONTAL 0
 # define VERTICAL 1
 
@@ -239,7 +239,7 @@ void					look_right(t_params *params);
 int						init_images(t_params *params);
 
 /* >>>>>>>>> rendering.c <<<<<<<< */
-void					determine_wall_texture(t_params *params, t_ray *ray,
+void					get_wall_texture(t_params *params, t_ray *ray,
 							t_wall *wall);
 void					render_wall_texture(t_params *params, t_wall *wall,
 							int column);
@@ -262,10 +262,10 @@ t_fpoint				vertical_ray_intersection(t_params *params,
 
 /* >>>>>>>>> parse_line.c <<<<<<<< */
 int						handle_texture_line(t_mdata *map_infos,
-							char ***array, int *parsed_flag, char *type);
+							char ***array, int *parsed_flag);
 
 int						handle_color_line(t_mdata *map_infos, char ***array,
-							int *parsed_flag, char *type);
+							int *parsed_flag);
 
 /* >>>>>>>>> map_error_handling.c <<<<<<<< */
 int						handle_invalid_line(char ***array, char *map_line);

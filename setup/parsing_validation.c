@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_validation.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamzaou <shamzaou@student.42abudhabi.ae>  +#+  +:+       +#+        */
+/*   By: alabdull <@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 19:19:28 by shamzaou          #+#    #+#             */
-/*   Updated: 2024/04/28 19:19:28 by shamzaou         ###   ########.fr       */
+/*   Updated: 2024/04/29 18:12:56 by alabdull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ int	validate_colors(t_color *color, char **colors)
 {
 	if (!are_valid_colors(colors))
 	{
-		perror("Error\n");
-		perror("Invalid color format. Please use three \
+		ft_putstr_fd(2, "Error\n");
+		ft_putstr_fd(2, "Invalid color format. Please use three \
 comma-separated digits for the color components (e.g., 'R,G,B').\n");
 		return (WRONG_MAP);
 	}
@@ -51,8 +51,8 @@ comma-separated digits for the color components (e.g., 'R,G,B').\n");
 	color->blue = ft_atoi(colors[2]);
 	if (!is_valid_color(color))
 	{
-		perror("Error\n");
-		perror("Color components must be between 0 \
+		ft_putstr_fd(2, "Error\n");
+		ft_putstr_fd(2, "Color components must be between 0 \
 and 255.\n");
 		return (WRONG_MAP);
 	}

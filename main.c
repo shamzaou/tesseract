@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamzaou <shamzaou@student.42abudhabi.ae>  +#+  +:+       +#+        */
+/*   By: alabdull <@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 19:18:29 by shamzaou          #+#    #+#             */
-/*   Updated: 2024/04/28 19:18:29 by shamzaou         ###   ########.fr       */
+/*   Updated: 2024/04/29 18:12:56 by alabdull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ int	validate_arguments(int argc, char **argv)
 {
 	if (argc != 2)
 	{
-		perror("Error\nWrong number of arguments\n");
+		ft_putstr_fd(2, "Error\nWrong number of arguments\n");
 		return (INVALID_ARG);
 	}
 	if (ft_strlen(argv[1]) < 5 || ft_strncmp(argv[1] + ft_strlen(argv[1]) - 4,
 			".cub", 4) != 0)
 	{
-		perror("Error\nWrong file extension\n");
+		ft_putstr_fd(2, "Error\nWrong file extension\n");
 		return (INVALID_ARG);
 	}
 	return (SUCCESS);

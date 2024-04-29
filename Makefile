@@ -37,10 +37,9 @@ OBJ = $(SRC:.c=.o)
 
 CC = CC
 
-CFLAGS = -g3 -O3
+CFLAGS = -Wall -Werror -Wextra -g3 -O3
 
 # -fsanitize=address
-# -Wall -Werror -Wextra
 
 MLX = libmlx.dylib
 

@@ -12,7 +12,7 @@
 
 #include "../cub3d.h"
 
-static void	determine_horizontal_texture(t_params *params, t_ray *ray,
+static void	get_horizontal_texture(t_params *params, t_ray *ray,
 		t_wall *wall)
 {
 	t_point	index;
@@ -34,7 +34,7 @@ static void	determine_horizontal_texture(t_params *params, t_ray *ray,
 	}
 }
 
-static void	determine_vertical_texture(t_params *params, t_ray *ray,
+static void	get_vertical_texture(t_params *params, t_ray *ray,
 		t_wall *wall)
 {
 	t_point	index;
@@ -56,14 +56,14 @@ static void	determine_vertical_texture(t_params *params, t_ray *ray,
 	}
 }
 
-void	determine_wall_texture(t_params *params, t_ray *ray, t_wall *wall)
+void	get_wall_texture(t_params *params, t_ray *ray, t_wall *wall)
 {
 	wall->wall_height = (WINDOW_HEIGHT * TILE_SIZE) / ray->length;
 	wall->wall_y = (WINDOW_HEIGHT / 2) - (wall->wall_height / 2);
 	if (ray->hit == HORIZONTAL)
-		determine_horizontal_texture(params, ray, wall);
+		get_horizontal_texture(params, ray, wall);
 	else
-		determine_vertical_texture(params, ray, wall);
+		get_vertical_texture(params, ray, wall);
 }
 
 void	render_wall_texture(t_params *params, t_wall *wall, int column)

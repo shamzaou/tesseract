@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_line.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamzaou <shamzaou@student.42abudhabi.ae>  +#+  +:+       +#+        */
+/*   By: alabdull <@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 19:19:15 by shamzaou          #+#    #+#             */
-/*   Updated: 2024/04/28 19:19:15 by shamzaou         ###   ########.fr       */
+/*   Updated: 2024/04/29 18:23:19 by alabdull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,24 @@ static int	parse_texture_line(t_mdata *map_infos, char **array)
 {
 	if (array_size(array) != 2)
 	{
-		perror("Error\n");
-		perror("Invalid texture.\n");
+		ft_putstr_fd(2, "Error\n");
+		ft_putstr_fd(2, "Invalid texture.\n");
 		return (WRONG_MAP);
 	}
 	if (!is_valid_texture_path(array[1]))
 	{
-		perror("Error\n");
-		perror("Invalid or non-existent texture path.\n");
+		ft_putstr_fd(2, "Error\n");
+		ft_putstr_fd(2, "Invalid or non-existent texture path.\n");
 		return (WRONG_MAP);
 	}
 	if (ft_strcmp(array[0], "NO") == 0)
 		map_infos->no_path = ft_strdup(array[1]);
 	else if (ft_strcmp(array[0], "SO") == 0)
 		map_infos->so_path = ft_strdup(array[1]);
-	else if (ft_strcmp(array[0], "WE") == 0)
-		map_infos->we_path = ft_strdup(array[1]);
 	else if (ft_strcmp(array[0], "EA") == 0)
 		map_infos->ea_path = ft_strdup(array[1]);
+	else if (ft_strcmp(array[0], "WE") == 0)
+		map_infos->we_path = ft_strdup(array[1]);
 	return (SUCCESS);
 }
 
@@ -59,8 +59,8 @@ static int	parse_color_line(t_mdata *map_infos, char **array)
 	t_color	*color;
 
 	if (array_size(array) != 2)
-		return (perror("Error\n"), \
-		perror("Invalid color line format. Please provide \
+		return (ft_putstr_fd(2, "Error\n"), \
+		ft_putstr_fd(2, "Invalid color line format. Please provide \
 only the color identifier and the color components.\n"), WRONG_MAP);
 	if (ft_strcmp(array[0], "F") == 0)
 		color = &map_infos->floor_color;
@@ -68,8 +68,8 @@ only the color identifier and the color components.\n"), WRONG_MAP);
 		color = &map_infos->ceiling_color;
 	if (count_commas(array[1]) != 2)
 	{
-		perror("Error\n");
-		perror("Invalid color format. Please use three \
+		ft_putstr_fd(2, "Error\n");
+		ft_putstr_fd(2, "Invalid color format. Please use three \
 comma-separated digits for the color components (e.g., 'R,G,B').\n");
 		return (WRONG_MAP);
 	}
@@ -81,12 +81,12 @@ comma-separated digits for the color components (e.g., 'R,G,B').\n");
 }
 
 int	handle_texture_line(t_mdata *map_infos, char ***array,
-							int *parsed_flag, char *type)
+							int *parsed_flag)
 {
 	if (*parsed_flag)
 	{
-		perror("Error\n");
-		perror("Duplicate texture path.\n");
+		ft_putstr_fd(2, "Error\n");
+		ft_putstr_fd(2, "Duplicate texture path.\n");
 		return (free_split_array(*array), WRONG_MAP);
 	}
 	else
@@ -99,12 +99,12 @@ int	handle_texture_line(t_mdata *map_infos, char ***array,
 }
 
 int	handle_color_line(t_mdata *map_infos, char ***array,
-						int *parsed_flag, char *type)
+						int *parsed_flag)
 {
 	if (*parsed_flag)
 	{
-		perror("Error\n");
-		perror("Duplicate color.\n");
+		ft_putstr_fd(2, "Error\n");
+		ft_putstr_fd(2, "Duplicate color.\n");
 		return (free_split_array(*array), WRONG_MAP);
 	}
 	else

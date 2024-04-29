@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_images.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamzaou <shamzaou@student.42abudhabi.ae>  +#+  +:+       +#+        */
+/*   By: alabdull <@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 19:17:42 by shamzaou          #+#    #+#             */
-/*   Updated: 2024/04/28 19:17:42 by shamzaou         ###   ########.fr       */
+/*   Updated: 2024/04/29 18:12:56 by alabdull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	init_image(t_params *params, char *image_path, t_gdata *image)
 			&image->height);
 	if (!image->img)
 	{
-		perror("Error\nFailed to load texture\n");
+		ft_putstr_fd(2, "Error\nFailed to load texture\n");
 		free_and_cleanup(params);
 		return (IMG_FAIL);
 	}
@@ -26,7 +26,7 @@ static int	init_image(t_params *params, char *image_path, t_gdata *image)
 			&image->line_length, &image->endian);
 	if (!image->addr)
 	{
-		perror("Error\nFailed to load texture\n");
+		ft_putstr_fd(2, "Error\nFailed to load texture\n");
 		free_and_cleanup(params);
 		return (IMG_FAIL);
 	}

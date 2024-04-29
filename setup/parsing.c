@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamzaou <shamzaou@student.42abudhabi.ae>  +#+  +:+       +#+        */
+/*   By: alabdull <@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 19:19:34 by shamzaou          #+#    #+#             */
-/*   Updated: 2024/04/28 19:19:34 by shamzaou         ###   ########.fr       */
+/*   Updated: 2024/04/29 18:23:56 by alabdull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,22 +39,22 @@ static int	parse_line(t_mdata *map_infos, char *map_line)
 	array = ft_split(map_line, ' ');
 	if (startswith(array, "NO"))
 		return (handle_texture_line(map_infos, &array,
-				&map_infos->no_path_parsed, "NO"));
+				&map_infos->no_path_parsed));
 	else if (startswith(array, "SO"))
 		return (handle_texture_line(map_infos, &array,
-				&map_infos->so_path_parsed, "SO"));
+				&map_infos->so_path_parsed));
 	else if (startswith(array, "WE"))
 		return (handle_texture_line(map_infos, &array,
-				&map_infos->we_path_parsed, "WE"));
+				&map_infos->we_path_parsed));
 	else if (startswith(array, "EA"))
 		return (handle_texture_line(map_infos, &array,
-				&map_infos->ea_path_parsed, "EA"));
+				&map_infos->ea_path_parsed));
 	else if (startswith(array, "F"))
 		return (handle_color_line(map_infos, &array,
-				&map_infos->floor_color_parsed, "floor"));
+				&map_infos->floor_color_parsed));
 	else if (startswith(array, "C"))
 		return (handle_color_line(map_infos, &array,
-				&map_infos->ceiling_color_parsed, "ceiling"));
+				&map_infos->ceiling_color_parsed));
 	else
 		return (handle_invalid_line(&array, map_line));
 }

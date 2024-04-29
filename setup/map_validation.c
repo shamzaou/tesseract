@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamzaou <shamzaou@student.42abudhabi.ae>  +#+  +:+       +#+        */
+/*   By: alabdull <@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 19:18:57 by shamzaou          #+#    #+#             */
-/*   Updated: 2024/04/28 19:18:57 by shamzaou         ###   ########.fr       */
+/*   Updated: 2024/04/29 18:12:56 by alabdull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	validate_map_element(t_map *map, int i, int j)
 	{
 		if (c != '1' && c != ' ')
 		{
-			perror("Error\nThe Map has an opening.");
+			ft_putstr_fd(2, "Error\nThe Map has an opening.");
 			return (0);
 		}
 	}
@@ -45,8 +45,8 @@ static int	validate_map_element(t_map *map, int i, int j)
 	{
 		if (!has_valid_neighbors(map, i, j))
 		{
-			perror("Error\n");
-			perror("Invalid map");
+			ft_putstr_fd(2, "Error\n");
+			ft_putstr_fd(2, "Invalid map");
 			return (0);
 		}
 	}
@@ -89,7 +89,7 @@ int	is_valid_map(t_map *map)
 		while (map->map_data[i][j])
 		{
 			if (!is_valid_map_char(map->map_data[i][j]))
-				return (perror("Error\nInvalid character in map\n"), 0);
+				return (ft_putstr_fd(2, "Error\nInvalid character in map\n"), 0);
 			if (map->map_data[i][j] == 'N' || map->map_data[i][j] == 'S'
 				|| map->map_data[i][j] == 'E' || map->map_data[i][j] == 'W')
 				start_count++;
@@ -98,6 +98,6 @@ int	is_valid_map(t_map *map)
 		i++;
 	}
 	if (start_count != 1)
-		return (perror("Error\nMultiple starting positions\n"), 0);
+		return (ft_putstr_fd(2, "Error\nMultiple starting positions\n"), 0);
 	return (is_enclosed_map(map));
 }

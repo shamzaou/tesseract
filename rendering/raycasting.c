@@ -66,7 +66,7 @@ void	cast_rays(t_params *params)
 		ray_angle = angle + (column * column_increment);
 		normalize_direction(&ray_angle);
 		ray_intersection(params, &ray, ray_angle);
-		determine_wall_texture(params, &ray, &params->wall);
+		get_wall_texture(params, &ray, &params->wall);
 		render_wall_texture(params, &params->wall, column);
 		render_ground_and_ceiling(params, &params->wall, column);
 		column++;
